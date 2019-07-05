@@ -1,5 +1,6 @@
 import etcampy as ec
 from etcampy.exception import CameraCannotOpenError
+from etcampy import core
 import cv2
 
 def hello(args=[]):
@@ -20,7 +21,7 @@ def calib(args=[]):
     if not cap.isOpened:
         raise CameraCannotOpenError("Camera cannot open!")
 
-    #core.show_video(cap)
+    core.show_video(cap)
     cap.release()
 
 def main():
