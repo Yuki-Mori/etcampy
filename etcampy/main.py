@@ -1,4 +1,6 @@
 import etcampy as ec
+from etcampy.exception import CameraCannotOpenError
+import cv2
 
 def hello(args=[]):
     print("Hello, World!")
@@ -10,7 +12,16 @@ def version(args=[]):
     print(ec.__version__)
 
 def calib(args=[]):
-    pass
+    if len(args) == 0:
+        cam_dev = 0
+    else:
+        cam_dev = args[0]
+    cap = cv2.VideoCapture(cam_dev)
+    if not cap.isOpened:
+        raise CameraCannotOpenError("Camera cannot open!")
+
+    #core.show_video(cap)
+    cap.release()
 
 def main():
     import sys
