@@ -9,6 +9,9 @@ def mess_help(args=[]):
 def version(args=[]):
     print(ec.__version__)
 
+def calib(args=[]):
+    pass
+
 def main():
     import sys
     com = {
@@ -16,6 +19,7 @@ def main():
         "help": mess_help,
         "--version": version,
         "-v": version,
+        "calib": calib
     }
     if len(sys.argv) <= 1:
         com['help']([])
