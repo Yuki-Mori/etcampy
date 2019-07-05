@@ -1,8 +1,9 @@
 from setuptools import setup
+import etcampy
 
 setup(
     name = 'etcampy',
-    version = '0.0.1',
+    version = etcampy.__version__,
     install_requires=['opencv-python'],
     packages = [
         'etcampy',
