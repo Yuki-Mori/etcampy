@@ -1,4 +1,5 @@
 import cv2
+import copy
 
 def show_video(cap):
     # カメラFPSを30FPSに設定
@@ -14,8 +15,14 @@ def show_video(cap):
     WINDOW_NAME = "camera"
     cv2.namedWindow(WINDOW_NAME)
 
+    next_path_id = 0
+
     while cap.isOpened():
         ret, frame = cap.read()
+        sv_frame = copy.deepcopy(frame)
+        path = 'img_{:05}.jpg'.format(next_path_id)
+        cv2.putText(frame, 'quit: q key', (10,80), cv2.FONT_HERSHEY_SIMPLEX, 1.5, (0,0,0), thickness=3)
+        cv2.putText(frame, f'capture: s key as {path}', (10,40), cv2.FONT_HERSHEY_SIMPLEX, 1.5, (0,0,0), thickness=3)
         
         # フレームを表示する
         cv2.imshow(WINDOW_NAME, frame)
@@ -24,4 +31,7 @@ def show_video(cap):
         
         if key == ord('q'):
             return
+        elif key == ord('s'):
+            cv2.imwrite(path,sv_frame)
+            next_path_id += 1
     return
