@@ -1,6 +1,6 @@
 import etcampy as ec
-from etcampy.exception import CameraCannotOpenError
-from etcampy import core
+from .exception import CameraCannotOpenError
+from . import core
 import cv2
 
 def hello(args=[]):
