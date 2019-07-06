@@ -7,7 +7,7 @@ ETロボコンのカメラシステムにアクセスし，映像を取得する
 
 ```bash
 $ git clone https://github.com/Yuki-Mori/etcampy.git
-$ git cd etcampy
+$ cd etcampy
 $ python setup.py install
 ```
 
